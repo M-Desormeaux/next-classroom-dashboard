@@ -22,9 +22,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="flex flex-col items-center min-h-svh gap-5">
+      <body className="flex flex-col items-center min-h-svh gap-5 w-full">
         <Navbar />
-        <main className="h-full flex flex-col items-center bg-white w-full max-w-4xl flex-grow rounded-t drop-shadow">
+        <main className="h-full flex flex-col bg-white w-full max-w-4xl flex-grow rounded-t drop-shadow">
           {children}
         </main>
       </body>
