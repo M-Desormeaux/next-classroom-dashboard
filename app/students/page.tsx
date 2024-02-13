@@ -1,3 +1,4 @@
+import { getStudents } from "@/services/getStudents";
 import { createClient } from "@/utils/supabase/server";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
@@ -7,13 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default async function StudentsPage() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  const { data: students } = await supabase
-    .from("students")
-    .select(
-      "*, grades(score, aLabel:assignments(label), cLabel:classes(label) )"
-    );
+  const students = getStudents();
 
   return (
     <>
