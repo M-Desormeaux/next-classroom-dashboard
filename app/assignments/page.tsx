@@ -1,3 +1,4 @@
+import { getAssignments } from "@/services/getAssignments";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,5 +6,12 @@ export const metadata: Metadata = {
 };
 
 export default async function AssignmentsPage() {
-  return <>Assignments Page</>;
+  const assignments = await getAssignments();
+
+  return (
+    <>
+      <h2 className="text-2xl py-1">Assignments</h2>
+      <pre>{JSON.stringify({ assignments }, null, 2)}</pre>
+    </>
+  );
 }
