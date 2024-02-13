@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default async function StudentsPage() {
-  const students = getStudents();
+  const students = await getStudents();
 
   return (
     <>
