@@ -13,7 +13,7 @@ export const Navbar = () => {
   const path = usePathname();
 
   return (
-    <nav className="w-full bg-white max-w-4xl">
+    <nav className="w-full bg-white max-w-4xl rounded-b drop-shadow">
       <ul className="flex gap-3 p-4">
         {ROUTES.map((route) => {
           const isActive = route.href === path;
