@@ -10,7 +10,7 @@ export default async function AssignmentsPage() {
 
   return (
     <>
-      <h2 className="text-2xl py-1">Assignments</h2>
+      <h1 className="py-1 text-2xl">Assignments</h1>
       <pre>{JSON.stringify(assignments, null, 2)}</pre>
     </>
   );

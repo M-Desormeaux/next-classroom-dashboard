@@ -12,7 +12,7 @@ export default async function StudentsPage() {
 
   return (
     <>
-      <h2 className="text-2xl py-1">Students</h2>
+      <h1 className="py-1 text-2xl">Students</h1>
       <pre>{JSON.stringify(students, null, 2)}</pre>
     </>
   );

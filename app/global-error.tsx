@@ -16,9 +16,9 @@ export default function GlobalError({
       <body className="flex flex-col items-center min-h-svh">
         <main className="min-h-lvh flex items-center px-10">
           <div className="border-red-600 border-2 px-6 py-4 bg-red-50 rounded">
-            <h2 className="font-bold text-xl">
+            <h1 className="font-bold text-xl">
               Woah, something Critical happened.
-            </h2>
+            </h1>
             <p>
               I apologize for the inconvenience and I am, likely, fixing this as
               we speak.

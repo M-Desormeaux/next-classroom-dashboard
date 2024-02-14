@@ -13,7 +13,7 @@ export const Navbar = () => {
   const path = usePathname();
 
   return (
-    <nav className="w-full bg-white max-w-4xl rounded-b drop-shadow sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 w-full max-w-4xl rounded-b bg-white drop-shadow">
       <ul className="flex gap-3 p-4">
         {ROUTES.map((route) => {
           const isActive = route.href === path;
@@ -22,7 +22,7 @@ export const Navbar = () => {
             <li key={route.label}>
               <Link
                 href={route.href}
-                className={`text-lg font-semibold text-gray-950 hover:text-gray-500 ${isActive ? "underline underline-offset-2" : ""}`}
+                className={`text-lg text-gray-950 hover:text-gray-500 hover:underline ${isActive ? "font-semibold underline underline-offset-2" : ""}`}
               >
                 {route.label}
               </Link>
