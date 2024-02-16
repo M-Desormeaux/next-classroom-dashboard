@@ -1,7 +1,12 @@
-import { GeistSans } from "geist/font/sans";
-import "./globals.css";
 import { Metadata } from "next";
+
 import { Navbar } from "@/components/Navbar";
+
+import "./globals.css";
+import { Inter, Roboto_Slab } from "next/font/google";
+
+export const serif = Roboto_Slab({ subsets: ["latin"] });
+export const sans = Inter({ subsets: ["latin"] });
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -21,10 +26,10 @@ export default function RootLayout({
   // throw new Error("This error is a test");
 
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="flex flex-col items-center min-h-svh gap-5 w-full">
+    <html lang="en" className={sans.className}>
+      <body className="flex min-h-svh w-full flex-col items-center gap-5">
         <Navbar />
-        <main className="h-full flex flex-col bg-white w-full max-w-4xl flex-grow rounded-t drop-shadow">
+        <main className="flex h-full w-full max-w-4xl flex-grow flex-col rounded-t bg-white drop-shadow">
           {children}
         </main>
       </body>
