@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import { serif } from "./layout";
-
 import { Card } from "@/components/Card";
 import { Section } from "@/components/Section";
 import { StudentCard } from "@/components/StudentCard";
@@ -10,6 +8,7 @@ import { FormattedAssignment, getAssignments } from "@/services/getAssignments";
 import { getStudents } from "@/services/getStudents";
 
 import { getScores } from "@/utils/getScores";
+import { serif } from "./fonts";
 
 const CLASS_IDS = ["english", "math", "history", "science"];
 

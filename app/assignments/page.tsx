@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { serif } from "../layout";
-
 import { Section } from "@/components/Section";
 
 import { getAssignments } from "@/services/getAssignments";
+import { serif } from "../fonts";
 
 export const metadata: Metadata = {
   title: "Abacus | Assignments",

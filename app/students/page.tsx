@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 
-import { serif } from "../layout";
-
 import { Section } from "@/components/Section";
 import { StudentCard } from "@/components/StudentCard";
 
 import { getStudents } from "@/services/getStudents";
+import { serif } from "../fonts";
 
 export const metadata: Metadata = {
   title: "Abacus | Students",
