@@ -10,7 +10,7 @@ export default function NotFound() {
       <p>It seems we could not find what you were looking for.</p>
       <Link
         href="/"
-        className="rounded border border-gray-100 bg-gray-100 p-3 shadow-sm hover:shadow active:shadow-sm"
+        className="rounded border border-gray-100 bg-gray-200 p-3 shadow-sm hover:shadow active:shadow-sm"
       >
         Return Home
       </Link>
