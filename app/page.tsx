@@ -1,14 +1,15 @@
+import type { Metadata } from "next";
+
+import { serif } from "./layout";
+
+import { Card } from "@/components/Card";
 import { Section } from "@/components/Section";
+import { StudentCard } from "@/components/StudentCard";
 
 import { FormattedAssignment, getAssignments } from "@/services/getAssignments";
 import { getStudents } from "@/services/getStudents";
 
 import { getScores } from "@/utils/getScores";
-
-import type { Metadata } from "next";
-
-import { serif } from "./layout";
-import { Card } from "@/components/Card";
 
 const CLASS_IDS = ["english", "math", "history", "science"];
 
@@ -47,7 +48,6 @@ export default async function HomePage() {
   );
 
   const topStudent = students?.[0];
-  const classesLabel = topStudent?.classes.join(", ") ?? "unknown";
 
   const atRiskStudents = students?.slice(-5).sort((a, b) => a.avg - b.avg);
   const starStudents = students?.slice(0, 5);
@@ -60,11 +60,11 @@ export default async function HomePage() {
       <div className="flex grid-cols-2 flex-col gap-3 sm:grid">
         <Card heading="Classroom Grades">
           <div className="flex items-center justify-center">
-            <svg width={260} height={105}>
+            <svg width={260} height={106}>
               {classSummary.map((data, index) => (
-                <g key={index} tabIndex={0}>
+                <g tabIndex={0} key={index}>
                   <text
-                    x={2}
+                    x={6}
                     y={index * 25 + 20}
                     className="text-sm font-semibold"
                   >
@@ -104,19 +104,7 @@ export default async function HomePage() {
           </div>
         </Card>
         <Card heading="Top Student">
-          <div className="flex w-full flex-grow items-center justify-between gap-1 rounded p-3 hover:bg-gray-100">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                {topStudent?.name}
-              </h3>
-              <span className="text-gray-800">{classesLabel}</span>
-            </div>
-            <span>
-              {"Avg: "}
-              <span className="font-semibold">{topStudent?.avg}</span>
-              {"%"}
-            </span>
-          </div>
+          <StudentCard student={topStudent} />
         </Card>
       </div>
       <Card heading="At Risk Students">
@@ -125,28 +113,13 @@ export default async function HomePage() {
             Top 5 lowest score students ranked in ascending order
           </span>
           <hr className="w-full border border-gray-100" />
-          {atRiskStudents?.map((student) => {
-            const classesLabel = student?.classes.join(", ") ?? "unknown";
-
-            return (
-              <div
-                key={student.studentID}
-                className="flex w-full items-center justify-between gap-1 rounded p-3 hover:bg-gray-100"
-              >
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    {student?.name}
-                  </h3>
-                  <span className="text-gray-800">{classesLabel}</span>
-                </div>
-                <span>
-                  {"Avg: "}
-                  <span className="font-semibold">{student?.avg}</span>
-                  {"%"}
-                </span>
-              </div>
-            );
-          })}
+          <ul className="w-full">
+            {atRiskStudents?.map((student) => (
+              <li key={student.studentID}>
+                <StudentCard student={student} />
+              </li>
+            ))}
+          </ul>
         </div>
       </Card>
       <Card heading="High Performing Students">
@@ -155,28 +128,13 @@ export default async function HomePage() {
             Top 5 highest score students ranked in decending order
           </span>
           <hr className="w-full border border-gray-100" />
-          {starStudents?.map((student) => {
-            const classesLabel = student?.classes.join(", ") ?? "unknown";
-
-            return (
-              <div
-                key={student.studentID}
-                className="flex w-full items-center justify-between gap-1 rounded p-3 hover:bg-gray-100"
-              >
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    {student?.name}
-                  </h3>
-                  <span className="text-gray-800">{classesLabel}</span>
-                </div>
-                <span>
-                  {"Avg: "}
-                  <span className="font-semibold">{student?.avg}</span>
-                  {"%"}
-                </span>
-              </div>
-            );
-          })}
+          <ul className="w-full">
+            {starStudents?.map((student) => (
+              <li key={student.studentID}>
+                <StudentCard student={student} />
+              </li>
+            ))}
+          </ul>
         </div>
       </Card>
     </Section>
