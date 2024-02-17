@@ -1,4 +1,4 @@
-import { serif } from "@/app/layout";
+import { serif } from "@/app/fonts";
 import type { PropsWithChildren } from "react";
 
 interface Card extends PropsWithChildren {

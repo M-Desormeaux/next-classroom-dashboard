@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { serif } from "./layout";
+import { serif } from "./fonts";
 
 export default function NotFound() {
   return (

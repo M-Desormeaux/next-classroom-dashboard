@@ -1,6 +1,6 @@
 "use client";
 
-import { GeistSans } from "geist/font/sans";
+import { sans, serif } from "./fonts";
 
 // Error components must use client
 
@@ -12,11 +12,11 @@ export default function GlobalError({
   reset: () => void;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="flex flex-col items-center min-h-svh">
-        <main className="min-h-lvh flex items-center px-10">
-          <div className="border-red-600 border-2 px-6 py-4 bg-red-50 rounded">
-            <h1 className="font-bold text-xl">
+    <html lang="en" className={sans.className}>
+      <body className="flex min-h-svh flex-col items-center">
+        <main className="flex min-h-lvh items-center px-10">
+          <div className="rounded border-2 border-red-600 bg-red-50 px-6 py-4">
+            <h1 className={`text-xl font-bold ${serif.className}`}>
               Woah, something Critical happened.
             </h1>
             <p>
