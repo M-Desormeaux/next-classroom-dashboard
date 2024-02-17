@@ -1,17 +1,13 @@
 import Link from "next/link";
 
-interface Props {
-  student:
-    | {
-        studentID: string;
-        name: string;
-        avg: number;
-        classes: string[];
-      }
-    | undefined;
+interface Student {
+  studentID: string;
+  name: string;
+  avg: number;
+  classes: string[];
 }
 
-export const StudentCard = ({ student }: Props) => {
+export const StudentCard = ({ student }: { student: Student | undefined }) => {
   const classesLabel = student?.classes.join(", ") ?? "unknown";
 
   return (
@@ -27,7 +23,7 @@ export const StudentCard = ({ student }: Props) => {
       </div>
       <span>
         {"Avg: "}
-        <span className="font-semibold">{student?.avg}</span>
+        <span className="font-semibold">{student?.avg.toFixed(1)}</span>
         {"%"}
       </span>
     </Link>
