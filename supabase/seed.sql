@@ -1,0 +1,161 @@
+SET session_replication_role = replica;
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+INSERT INTO "public"."classes" ("classID", "label", "start", "end") VALUES
+	('english', 'English 101', '8:00', '10:00'),
+	('history', 'History 101', '8:30', '10:30'),
+	('math', 'Math 101', '10:15', '12:15'),
+	('science', 'Science 101', '11:30', '13:30');
+
+INSERT INTO "public"."assignments" ("assignmentID", "classID", "label") VALUES
+	('eng-assign-one', 'english', 'Literary Analysis Essay'),
+	('eng-assign-two', 'english', 'Research Paper'),
+	('eng-assign-three', 'english', 'Poetry Explication'),
+	('eng-assgn-four', 'english', 'Rhetorical Analysis'),
+	('eng-assign-five', 'english', 'Argumentative Essay'),
+	('his-assign-one', 'history', 'Primary Source Analysis'),
+	('his-assign-two', 'history', 'Historiography Paper'),
+	('his-assign-three', 'history', 'Cultural History Project'),
+	('his-assign-four', 'history', 'Biography Report'),
+	('his-assign-five', 'history', 'Timeline Creation'),
+	('math-assign-one', 'math', 'Geometry Proof'),
+	('math-assign-two', 'math', 'Statistics Project'),
+	('math-assign-three', 'math', 'Polynomial Factorization'),
+	('math-assign-four', 'math', 'Trigonometric Functions'),
+	('math-assign-five', 'math', 'Calculus Problem Set'),
+	('sci-assign-one', 'science', 'Lab Report'),
+	('sci-assign-two', 'science', 'Research Proposal'),
+	('sci-assign-three', 'science', 'Experiment Design'),
+	('sci-assign-four', 'science', 'Model Creation'),
+	('sci-assign-five', 'science', 'Scientific Poster');
+
+INSERT INTO "public"."students" ("studentID", "name") VALUES
+	('dce7670a-2a84-4821-a36d-40b51923dc24', 'John Smith'),
+	('abe8f82f-cdd6-4b9e-9928-0498178cf988', 'Sarah Johnson'),
+	('63e9fb0b-1b04-41e2-8492-f109ca7871a9', 'Michael Williams'),
+	('c325e1db-352a-4208-a08a-55f7b0a374c3', 'Jessica Brown'),
+	('68d802ba-403c-46dd-92dc-9c9462e67a1d', 'David Miller'),
+	('8e57a30e-7f94-4b22-9177-00019d9857ba', 'Ashley Thomas'),
+	('48a7fafa-537d-4bfc-b0bd-e148f202f66e', 'Christopher Anderson'),
+	('f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 'Brittany White'),
+	('dec64bd6-be24-450b-909a-f8bb73a881aa', 'Matthieu Harris'),
+	('1265accb-630d-4277-9681-633cdb98d9f7', 'Daniel Martin');
+
+
+INSERT INTO "public"."grades" ("gradeID", "assignmentID", "classID", "studentID", "score") VALUES
+	('47a3f739-a60c-4006-8d17-a3e174865b4b', 'math-assign-one', 'math', '1265accb-630d-4277-9681-633cdb98d9f7', 65),
+	('69470c2b-48e8-4a14-ad1c-32186924c429', 'eng-assign-one', 'english', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 88),
+	('5e31ca8b-e4fa-448e-800a-b28c604d66ce', 'eng-assign-one', 'english', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 73),
+	('bf420779-d8aa-4125-af94-3eec6fc42326', 'eng-assign-one', 'english', '8e57a30e-7f94-4b22-9177-00019d9857ba', 66),
+	('481044ee-8816-4727-9130-90820065d791', 'eng-assign-one', 'english', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 86),
+	('2c4b736f-dd83-4f18-a454-5ff24d91d040', 'eng-assign-one', 'english', '1265accb-630d-4277-9681-633cdb98d9f7', 74),
+	('1139afc9-8fa3-438b-9869-4a3f7c0a23d5', 'eng-assign-two', 'english', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 90),
+	('d1571de8-bcbd-4cb9-85b9-6d8be3aa2851', 'eng-assign-two', 'english', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 79),
+	('6e73937e-9412-4b33-87fe-49cf6b723c02', 'eng-assign-two', 'english', '8e57a30e-7f94-4b22-9177-00019d9857ba', 77),
+	('2bf33594-8c16-4ed2-bda6-cb316c6cabb3', 'eng-assign-two', 'english', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 95),
+	('4b3b9f99-1ca0-4657-a7f6-d643bd63d99d', 'eng-assign-two', 'english', '1265accb-630d-4277-9681-633cdb98d9f7', 92),
+	('10b2b5bd-5e84-4b71-a2fe-fd9d90071f8d', 'eng-assign-three', 'english', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 68),
+	('d2d5a2ae-fdd7-41cd-9413-ac0223afc7b7', 'eng-assign-three', 'english', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 86),
+	('b1c9669f-3c9c-406e-adaa-55c8a054202e', 'eng-assign-three', 'english', '8e57a30e-7f94-4b22-9177-00019d9857ba', 90),
+	('340815da-c605-4ca7-922f-23e4330acba6', 'eng-assign-three', 'english', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 90),
+	('fc640aca-378a-4bbd-a2c8-3bfe295087de', 'eng-assign-three', 'english', '1265accb-630d-4277-9681-633cdb98d9f7', 85),
+	('e790f731-f6e9-4ebe-9db0-c0ecaac4756f', 'eng-assgn-four', 'english', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 74),
+	('0fafab14-bac6-4867-883e-d36b8ddddf11', 'eng-assgn-four', 'english', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 69),
+	('6b937ed2-bfdd-419a-9bc0-f832686cc6a5', 'eng-assgn-four', 'english', '8e57a30e-7f94-4b22-9177-00019d9857ba', 82),
+	('978dface-68c9-4c28-be4f-42fd8a0b64b5', 'eng-assgn-four', 'english', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 72),
+	('c1d35eba-5da1-4478-90c0-5dc588f4fce4', 'eng-assgn-four', 'english', '1265accb-630d-4277-9681-633cdb98d9f7', 73),
+	('f311c648-f6d3-4532-9e2f-7aa965615fcc', 'eng-assign-five', 'english', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 89),
+	('4594bc4d-fb71-43c8-8f70-d114d216f4d2', 'eng-assign-five', 'english', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 72),
+	('855e3074-7e9c-4fda-8bcf-e3e102d98b77', 'eng-assign-five', 'english', '8e57a30e-7f94-4b22-9177-00019d9857ba', 72),
+	('d676a5b7-e69d-4642-b4c2-81b940fcf67b', 'eng-assign-five', 'english', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 93),
+	('788eb6c3-68c4-40d5-af54-eec67ee1cb09', 'eng-assign-five', 'english', '1265accb-630d-4277-9681-633cdb98d9f7', 77),
+	('0eda6ee1-d63f-4523-8568-8efa75364232', 'his-assign-one', 'history', 'dce7670a-2a84-4821-a36d-40b51923dc24', 78),
+	('1d87b083-bfe5-417c-b298-8dad3a6919b2', 'his-assign-one', 'history', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 94),
+	('50feca04-9020-4eb6-aa9a-140de23e10e0', 'his-assign-one', 'history', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 95),
+	('4f935bf6-0373-4689-b059-8e458fbb38f3', 'his-assign-one', 'history', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 77),
+	('5eeca6ca-e01b-4c45-8344-29a530f7522d', 'his-assign-one', 'history', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 73),
+	('aa209ef3-cce5-44b2-86ad-f977c2530077', 'his-assign-two', 'history', 'dce7670a-2a84-4821-a36d-40b51923dc24', 88),
+	('cf29bd10-1d4b-4a93-a131-cd3a1c8a8b04', 'his-assign-two', 'history', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 96),
+	('a66083cb-14bf-478b-ace5-259802dd6233', 'his-assign-two', 'history', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 78),
+	('7f165280-bfae-4212-bd5d-043710455489', 'his-assign-two', 'history', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 80),
+	('c943d888-5d23-4b64-ba6e-e9ff28b0642e', 'his-assign-two', 'history', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 76),
+	('2d97125e-092b-40d6-88cb-6866546c0b8f', 'his-assign-three', 'history', 'dce7670a-2a84-4821-a36d-40b51923dc24', 75),
+	('671310f3-a945-47ed-9e81-65e373b67cad', 'his-assign-three', 'history', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 67),
+	('e7c9c4d0-ccb4-44fd-8357-e72a07f3477c', 'his-assign-three', 'history', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 69),
+	('d47f347f-1c91-4ae5-a585-037b86f490d1', 'his-assign-three', 'history', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 89),
+	('f277fb3a-9c36-44ec-be07-39f9026a96f3', 'his-assign-three', 'history', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 78),
+	('b471c4a1-6890-43e5-8920-f29ca78f3c0a', 'his-assign-four', 'history', 'dce7670a-2a84-4821-a36d-40b51923dc24', 91),
+	('93567336-f28c-4a71-b38c-3bee948d3ccb', 'his-assign-four', 'history', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 95),
+	('16273bc5-7a64-4048-95b2-4c0fe421ecd5', 'his-assign-four', 'history', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 95),
+	('881e97e6-39d3-49f0-981e-6eb7df6cd671', 'his-assign-four', 'history', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 84),
+	('f360c2ec-3bac-4613-9d33-e1306a988ca2', 'his-assign-four', 'history', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 87),
+	('f844917e-b61b-4d96-9969-cda70360f1b4', 'his-assign-five', 'history', 'dce7670a-2a84-4821-a36d-40b51923dc24', 75),
+	('c42c2eb7-b59b-4f72-a618-c7f94e65d645', 'his-assign-five', 'history', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 71),
+	('7fc7852f-d11f-44a3-b93f-809a27153708', 'his-assign-five', 'history', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 89),
+	('bf8e881b-e25b-4be8-bbd7-8e76357f87b0', 'his-assign-five', 'history', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 83),
+	('e0372c80-b733-4c12-9dc1-a6fafcd10019', 'his-assign-five', 'history', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 81),
+	('8eae7ac5-4d0d-47b2-b44d-f0b75b4c9430', 'math-assign-one', 'math', 'dce7670a-2a84-4821-a36d-40b51923dc24', 94),
+	('6870ea69-f8c1-447f-aa73-d854e1e38b7e', 'math-assign-one', 'math', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 83),
+	('9244e5f3-3adf-4b3a-90c9-3a9ca7df9bdc', 'math-assign-one', 'math', '8e57a30e-7f94-4b22-9177-00019d9857ba', 85),
+	('583bdda4-b22d-482b-849a-38522be57068', 'math-assign-one', 'math', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 93),
+	('248cb12c-a11e-4f26-b480-af7a39280c71', 'math-assign-two', 'math', '1265accb-630d-4277-9681-633cdb98d9f7', 79),
+	('352a70a8-ef7f-4710-8273-5c48203da4d5', 'math-assign-two', 'math', 'dce7670a-2a84-4821-a36d-40b51923dc24', 82),
+	('7e173a94-8150-4e5b-b560-d43c43965185', 'math-assign-two', 'math', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 92),
+	('5d98245f-c896-435e-a02f-e23fb4398eec', 'math-assign-two', 'math', '8e57a30e-7f94-4b22-9177-00019d9857ba', 65),
+	('7084bd7a-9196-4793-9479-b888f7111cfc', 'math-assign-two', 'math', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 70),
+	('754ccefd-4134-4721-b0f1-92e67f3f476e', 'math-assign-three', 'math', '1265accb-630d-4277-9681-633cdb98d9f7', 90),
+	('44a59a59-b059-4c51-a77d-724755855666', 'math-assign-three', 'math', 'dce7670a-2a84-4821-a36d-40b51923dc24', 79),
+	('c2cee537-d099-4ffb-8fc0-92b8f21860aa', 'math-assign-three', 'math', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 93),
+	('4780e6e4-5673-460b-a1e7-f6a020c4993a', 'math-assign-three', 'math', '8e57a30e-7f94-4b22-9177-00019d9857ba', 84),
+	('4e7f88cc-6887-4078-b086-2d9fc459c3ae', 'math-assign-three', 'math', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 81),
+	('bdce633f-7069-44b1-a1e4-590fdf1faad7', 'math-assign-four', 'math', '1265accb-630d-4277-9681-633cdb98d9f7', 79),
+	('7fee72d1-85c9-4c29-81c5-0311f9873501', 'math-assign-four', 'math', 'dce7670a-2a84-4821-a36d-40b51923dc24', 76),
+	('1eb5359e-fffd-419f-8889-b3b8b2156c8f', 'math-assign-four', 'math', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 69),
+	('f6453984-3a97-446f-b5ce-7b7046645b6e', 'math-assign-four', 'math', '8e57a30e-7f94-4b22-9177-00019d9857ba', 94),
+	('4474e40e-565a-4ac6-ad27-09983b9e9560', 'math-assign-four', 'math', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 69),
+	('b92d0626-0e97-4eec-9d8a-e4165e82afa9', 'math-assign-five', 'math', 'dce7670a-2a84-4821-a36d-40b51923dc24', 86),
+	('32b922d4-582f-4032-a535-9dcd1b228459', 'math-assign-five', 'math', '68d802ba-403c-46dd-92dc-9c9462e67a1d', 91),
+	('65679995-83d1-40ff-86c8-683680f3018d', 'math-assign-five', 'math', '8e57a30e-7f94-4b22-9177-00019d9857ba', 91),
+	('0ee03106-7dc2-45f6-89c8-3972b93d1867', 'math-assign-five', 'math', 'dec64bd6-be24-450b-909a-f8bb73a881aa', 76),
+	('e730f883-45b1-46d4-ab80-ff28a981f596', 'math-assign-five', 'math', '1265accb-630d-4277-9681-633cdb98d9f7', 92),
+	('ff9af669-5f7a-4283-ae5e-378f92bf0943', 'sci-assign-one', 'science', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 87),
+	('1d0fd90b-5b84-4804-8161-684d9670477b', 'sci-assign-one', 'science', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 96),
+	('30a4f4a2-de23-4e4d-9f71-c05fb089c263', 'sci-assign-one', 'science', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 78),
+	('75e778eb-e3e6-4601-acce-9792afa005cd', 'sci-assign-one', 'science', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 96),
+	('4453a2d4-b438-48e1-a6f1-126ef9c525c6', 'sci-assign-one', 'science', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 72),
+	('711a485e-4715-4fa0-8fe9-6d539fa6b2d1', 'sci-assign-two', 'science', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 89),
+	('c4c2ba22-f638-41ea-afcc-cb3b44d5ef7a', 'sci-assign-two', 'science', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 82),
+	('219599d6-c59b-40a0-b847-aca7578e8f14', 'sci-assign-two', 'science', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 91),
+	('68add752-d9d7-4860-bd39-0c086fbb78bd', 'sci-assign-two', 'science', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 92),
+	('6615b9f8-df58-4a79-9fbe-bfa309fdb5f7', 'sci-assign-two', 'science', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 84),
+	('0587d9b8-a4df-4377-b199-43b97465dd3c', 'sci-assign-three', 'science', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 73),
+	('463cec20-6daa-487e-9811-911528cf0bee', 'sci-assign-three', 'science', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 94),
+	('be8b2089-df63-4a9c-adea-854d99b7b123', 'sci-assign-three', 'science', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 75),
+	('ca622fb6-0938-45f2-bbc8-032eb080c8bc', 'sci-assign-three', 'science', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 72),
+	('8cb8fdd5-b4a2-416f-8a9d-cff418adcd8b', 'sci-assign-three', 'science', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 87),
+	('10bbb1a1-324f-41b4-aeec-4b8822675d88', 'sci-assign-four', 'science', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 88),
+	('ed1f3b07-23c4-4907-945c-705d76ba5aec', 'sci-assign-four', 'science', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 81),
+	('16996566-8f11-408e-a8a8-42ed1e319b12', 'sci-assign-four', 'science', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 74),
+	('40a53788-26d0-498b-9d59-849ec20edc98', 'sci-assign-four', 'science', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 67),
+	('9d2003c5-ccc1-4c2e-b7db-72980f8bf8f9', 'sci-assign-four', 'science', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 74),
+	('43223b3a-be4b-4057-8fe6-8e33d7877eb7', 'sci-assign-five', 'science', 'abe8f82f-cdd6-4b9e-9928-0498178cf988', 68),
+	('5b99b565-ce17-461a-b2b6-d29758e40bf8', 'sci-assign-five', 'science', '63e9fb0b-1b04-41e2-8492-f109ca7871a9', 87),
+	('fd44581d-a07e-4e49-b42e-6edd8454dd64', 'sci-assign-five', 'science', 'c325e1db-352a-4208-a08a-55f7b0a374c3', 94),
+	('a7e1e6e8-c78a-499d-987a-98b47472bf71', 'sci-assign-five', 'science', '48a7fafa-537d-4bfc-b0bd-e148f202f66e', 87),
+	('a59e6b6a-fbe5-4194-a63c-057a06b187dc', 'sci-assign-five', 'science', 'f0427f2a-46dc-4778-ba1e-43c9a23adbe0', 90);
+
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
+
+SELECT pg_catalog.setval('"pgsodium"."key_key_id_seq"', 1, false);
+
+RESET ALL;
