@@ -30,7 +30,7 @@ const getClassData = (assignments: FormattedAssignment[], classID: string) => {
   const { min, max, difference, avg } = getScores(grades);
 
   return {
-    label: filteredAssignments[0].classLabel,
+    label: filteredAssignments[0]?.classLabel,
     difference,
     avg,
     min,
