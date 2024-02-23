@@ -3,10 +3,7 @@ import { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 
 import "./globals.css";
-import { Inter, Roboto_Slab } from "next/font/google";
-
-export const serif = Roboto_Slab({ subsets: ["latin"] });
-export const sans = Inter({ subsets: ["latin"] });
+import { sans } from "./fonts";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
