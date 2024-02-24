@@ -58,52 +58,54 @@ export default async function HomePage() {
       </header>
       <div className="flex grid-cols-2 flex-col gap-3 sm:grid">
         <Card heading="Classroom Grades">
-          <div className="flex items-center justify-center">
-            <svg width={260} height={106}>
-              {classSummary.map((data, index) => (
-                <g tabIndex={0} key={index}>
-                  <text
-                    x={6}
-                    y={index * 25 + 20}
-                    className="text-sm font-semibold"
-                  >
-                    {data.label}
-                  </text>
-                  <line
-                    x1={100}
-                    x2={200}
-                    y1={index * 25 + 5 + 10}
-                    y2={index * 25 + 5 + 10}
-                    className="stroke-gray-300 stroke-1"
-                  />
-                  <rect
-                    width={data.difference}
-                    height={20}
-                    className="fill-white stroke-gray-600"
-                    y={index * 25 + 5}
-                    x={data.min + 100}
-                  />
-                  <line
-                    x1={data.avg + 100}
-                    x2={data.avg + 100}
-                    y1={index * 25 + 5}
-                    y2={index * 25 + 5 + 20}
-                    className="stroke-gray-600 stroke-1"
-                  />
-                  <text
-                    x={210}
-                    y={index * 25 + 20}
-                    className="text-sm font-semibold"
-                  >
-                    {data.avg}%
-                  </text>
-                </g>
-              ))}
-            </svg>
-          </div>
+          {!!assignments && (
+            <div className="flex items-center justify-center">
+              <svg width={260} height={106}>
+                {classSummary.map((data, index) => (
+                  <g tabIndex={0} key={index}>
+                    <text
+                      x={6}
+                      y={index * 25 + 20}
+                      className="text-sm font-semibold"
+                    >
+                      {data.label}
+                    </text>
+                    <line
+                      x1={100}
+                      x2={200}
+                      y1={index * 25 + 5 + 10}
+                      y2={index * 25 + 5 + 10}
+                      className="stroke-gray-300 stroke-1"
+                    />
+                    <rect
+                      width={data.difference}
+                      height={20}
+                      className="fill-white stroke-gray-600"
+                      y={index * 25 + 5}
+                      x={data.min + 100}
+                    />
+                    <line
+                      x1={data.avg + 100}
+                      x2={data.avg + 100}
+                      y1={index * 25 + 5}
+                      y2={index * 25 + 5 + 20}
+                      className="stroke-gray-600 stroke-1"
+                    />
+                    <text
+                      x={210}
+                      y={index * 25 + 20}
+                      className="text-sm font-semibold"
+                    >
+                      {data.avg}%
+                    </text>
+                  </g>
+                ))}
+              </svg>
+            </div>
+          )}
         </Card>
         <Card heading="Top Student">
-          <StudentCard student={topStudent} />
+          {!!topStudent && <StudentCard student={topStudent} />}
         </Card>
       </div>
       <Card heading="At Risk Students">
