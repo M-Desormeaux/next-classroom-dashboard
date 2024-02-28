@@ -60,7 +60,7 @@ export default async function HomePage() {
         <Card heading="Classroom Grades">
           {!!assignments && (
             <div className="flex items-center justify-center">
-              <svg width={260} height={106}>
+              <svg width={265} height={106}>
                 {classSummary.map((data, index) => (
                   <g tabIndex={0} key={index}>
                     <text
