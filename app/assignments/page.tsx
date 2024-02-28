@@ -28,7 +28,7 @@ const AssignmentCard = ({ assignment }: { assignment: Assignment }) => {
   return (
     <Link
       href={`/students/${assignment.assignmentID}`}
-      className="xs:justify-between xs:items-center xs:flex-row group flex w-full flex-grow flex-col gap-1 rounded p-3 hover:bg-gray-100 hover:shadow active:shadow-sm"
+      className="xs:justify-between xs:items-center xs:flex-row group flex w-full flex-grow flex-col gap-1 rounded border p-3 hover:bg-gray-100 hover:shadow active:shadow-sm"
     >
       <div>
         <h3 className="text-lg font-semibold text-gray-900 group-hover:underline group-focus-visible:underline">
@@ -55,7 +55,7 @@ export default async function AssignmentsPage() {
           All Assignments
         </h1>
       </header>
-      <ul>
+      <ul className="flex w-full flex-col gap-2">
         {assignments?.map((assignment) => (
           <li key={assignment.assignmentID}>
             <AssignmentCard assignment={assignment} />

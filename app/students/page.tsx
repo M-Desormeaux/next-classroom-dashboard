@@ -21,7 +21,7 @@ export default async function StudentsPage() {
         </h1>
       </header>
 
-      <ul>
+      <ul className="flex w-full flex-col gap-2">
         {students?.formatted?.map((student) => (
           <li key={student.studentID}>
             <StudentCard student={student} />

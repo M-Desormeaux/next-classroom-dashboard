@@ -113,8 +113,7 @@ export default async function HomePage() {
           <span className="text-gray-800">
             Top 5 lowest score students ranked in ascending order
           </span>
-          <hr className="w-full border border-gray-100" />
-          <ul className="w-full">
+          <ul className="flex w-full flex-col gap-2">
             {atRiskStudents?.map((student) => (
               <li key={student.studentID}>
                 <StudentCard student={student} />
@@ -128,8 +127,7 @@ export default async function HomePage() {
           <span className="text-gray-800">
             Top 5 highest score students ranked in decending order
           </span>
-          <hr className="w-full border border-gray-100" />
-          <ul className="w-full">
+          <ul className="flex w-full flex-col gap-2">
             {starStudents?.map((student) => (
               <li key={student.studentID}>
                 <StudentCard student={student} />

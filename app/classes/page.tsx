@@ -22,7 +22,7 @@ export default async function ClassesPage() {
         </h1>
       </header>
 
-      <ul className="w-full">
+      <ul className="flex w-full flex-col gap-2">
         {data?.map(
           (a: {
             classID: number;
@@ -33,7 +33,7 @@ export default async function ClassesPage() {
             <li key={a?.classID}>
               <Link
                 href={`/students/${a?.classID}`}
-                className="xs:justify-between xs:items-center xs:flex-row group flex w-full flex-grow flex-col gap-1 rounded p-3 hover:bg-gray-100 hover:shadow active:shadow-sm"
+                className="xs:justify-between xs:items-center xs:flex-row group flex w-full flex-grow flex-col gap-1 rounded border p-3 hover:bg-gray-100 hover:shadow active:shadow-sm"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:underline group-focus-visible:underline">
