@@ -4,17 +4,15 @@ import { Section } from "@/components/Section";
 
 import { serif } from "../fonts";
 
+import { getClasses } from "@/services/getClasses";
+import Link from "next/link";
+
 export const metadata: Metadata = {
   title: "Abacus | Classes",
 };
 
 export default async function ClassesPage() {
-  const classes = [
-    { id: 1, name: "science" },
-    { id: 2, name: "english" },
-    { id: 1, name: "math" },
-    { id: 1, name: "history" },
-  ];
+  const data = await getClasses();
 
   return (
     <Section>
@@ -24,10 +22,31 @@ export default async function ClassesPage() {
         </h1>
       </header>
 
-      <ul>
-        {classes?.map((a: { id: number; name: string }) => (
-          <li key={a?.id}>{a?.name}</li>
-        ))}
+      <ul className="w-full">
+        {data?.map(
+          (a: {
+            classID: number;
+            label: string;
+            start: string;
+            end: string;
+          }) => (
+            <li key={a?.classID}>
+              <Link
+                href={`/students/${a?.classID}`}
+                className="xs:justify-between xs:items-center xs:flex-row group flex w-full flex-grow flex-col gap-1 rounded p-3 hover:bg-gray-100 hover:shadow active:shadow-sm"
+              >
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:underline group-focus-visible:underline">
+                    {a?.label}
+                  </h3>
+                </div>
+                <div>
+                  {a?.start} to {a?.end}
+                </div>
+              </Link>
+            </li>
+          ),
+        )}
       </ul>
     </Section>
   );
