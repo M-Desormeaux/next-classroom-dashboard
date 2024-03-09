@@ -32,8 +32,8 @@ export default async function ClassesPage() {
           }) => (
             <li key={a?.classID}>
               <Link
-                href={`/students/${a?.classID}`}
-                className="xs:justify-between xs:items-center xs:flex-row group flex w-full flex-grow flex-col gap-1 rounded border p-3 hover:bg-gray-100 hover:shadow active:shadow-sm"
+                href={`/classes/${a?.classID}`}
+                className="group flex w-full flex-grow flex-col gap-1 rounded border p-3 hover:bg-gray-100 hover:shadow active:shadow-sm xs:flex-row xs:items-center xs:justify-between"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:underline group-focus-visible:underline">
