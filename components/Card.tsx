@@ -2,7 +2,7 @@ import { serif } from "@/app/fonts";
 import type { PropsWithChildren } from "react";
 
 interface Card extends PropsWithChildren {
-  heading: string;
+  heading?: string;
 }
 
 export const Card = ({ heading, children }: Card) => {
