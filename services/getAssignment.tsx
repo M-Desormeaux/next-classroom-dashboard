@@ -3,13 +3,12 @@ import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 
 interface Grade {
+  name: string;
   score: number;
   classID: string;
-  name: string;
-  teacher: string;
-  classLabel: string;
   gradeID: string;
   studentID: string;
+  classLabel: string;
   assignmentID: string;
 }
 
@@ -19,12 +18,13 @@ interface Assignment {
   label: string;
   classLabel: {
     label: string;
+    teacher: string;
   };
   grades: {
     score: number;
     classID: string;
     name: { name: string };
-    classLabel: { label: string; teacher: string };
+    classLabel: { label: string };
     gradeID: string;
     studentID: string;
     assignmentID: string;
@@ -36,8 +36,8 @@ type GetAssignmentsSchema = Assignment[] | null;
 export interface FormattedAssignment {
   assignmentID: string;
   classID: string;
-  teacher: string;
   label: string;
+  teacher: string;
   classLabel: string;
   grades: Grade[];
 
@@ -53,7 +53,7 @@ export const getAssignment = async (id: string) => {
   const { data }: { data: GetAssignmentsSchema } = await supabase
     .from("assignments")
     .select(
-      "*, classLabel:classes(*), grades(*, classLabel:classes(label), name:students(name))",
+      "*, classLabel:classes(teacher, label), grades(*, classLabel:classes(label), name:students(name))",
     )
     .eq("assignmentID", id);
 
@@ -71,7 +71,7 @@ export const getAssignment = async (id: string) => {
       return {
         ...assignment,
         grades: formattedGrades,
-        teacher: assignment.classLabel?.teacher,
+        teacher: assignment.classLabel.teacher,
         classLabel: assignment.classLabel.label,
         min,
         max,
