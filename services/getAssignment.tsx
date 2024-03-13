@@ -4,6 +4,13 @@ import { cookies } from "next/headers";
 
 interface Grade {
   score: number;
+  classID: string;
+  name: string;
+  teacher: string;
+  classLabel: string;
+  gradeID: string;
+  studentID: string;
+  assignmentID: string;
 }
 
 interface Assignment {
@@ -13,7 +20,15 @@ interface Assignment {
   classLabel: {
     label: string;
   };
-  grades: Grade[];
+  grades: {
+    score: number;
+    classID: string;
+    name: { name: string };
+    classLabel: { label: string; teacher: string };
+    gradeID: string;
+    studentID: string;
+    assignmentID: string;
+  }[];
 }
 
 type GetAssignmentsSchema = Assignment[] | null;
@@ -21,9 +36,10 @@ type GetAssignmentsSchema = Assignment[] | null;
 export interface FormattedAssignment {
   assignmentID: string;
   classID: string;
+  teacher: string;
   label: string;
   classLabel: string;
-  grades: number[];
+  grades: Grade[];
 
   min: number;
   max: number;
@@ -31,22 +47,31 @@ export interface FormattedAssignment {
   avg: number;
 }
 
-export const getAssignments = async () => {
+export const getAssignment = async (id: string) => {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
   const { data }: { data: GetAssignmentsSchema } = await supabase
     .from("assignments")
-    .select("*, classLabel:classes(label), grades(score)");
+    .select(
+      "*, classLabel:classes(*), grades(*, classLabel:classes(label), name:students(name))",
+    )
+    .eq("assignmentID", id);
 
   const formatted: FormattedAssignment[] | null =
     data?.map((assignment) => {
       const grades = assignment.grades.map((grade) => grade.score);
+      const formattedGrades = assignment.grades.map((grade) => ({
+        ...grade,
+        name: grade.name.name,
+        classLabel: grade.classLabel.label,
+      }));
 
       const { min, max, difference, avg } = getScores(grades);
 
       return {
         ...assignment,
-        grades,
+        grades: formattedGrades,
+        teacher: assignment.classLabel?.teacher,
         classLabel: assignment.classLabel.label,
         min,
         max,

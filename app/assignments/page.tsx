@@ -38,7 +38,7 @@ const AssignmentCard = ({ assignment }: { assignment: Assignment }) => {
       </div>
       <span>
         {"Avg: "}
-        <span className="font-semibold">{assignment?.avg.toFixed(1)}</span>
+        <span className="font-semibold">{assignment?.avg?.toFixed(2)}</span>
         {"%"}
       </span>
     </Link>
@@ -46,7 +46,7 @@ const AssignmentCard = ({ assignment }: { assignment: Assignment }) => {
 };
 
 export default async function AssignmentsPage() {
-  const { formatted: assignments } = await getAssignments();
+  const assignments = await getAssignments();
 
   return (
     <Section>
