@@ -13,25 +13,19 @@ interface Assignment {
 }
 
 const AssignmentCard = ({ assignment }: { assignment: Assignment }) => {
-  const classLabel = assignment?.classLabel ?? "unknown";
-
   return (
-    <Link
-      href={`/students/${assignment.studentID}`}
-      className="group flex w-full flex-grow flex-col gap-1 rounded border p-3 hover:bg-gray-100 hover:shadow active:shadow-sm xs:flex-row xs:items-center xs:justify-between"
-    >
+    <div className="flex w-full flex-grow flex-col gap-1 rounded p-3 xs:flex-row xs:items-center xs:justify-between">
       <div>
-        <h3 className="text-lg font-semibold text-gray-900 group-hover:underline group-focus-visible:underline">
+        <h3 className="text-lg font-semibold text-gray-900">
           {assignment?.name}
         </h3>
-        <span className="text-gray-800">{classLabel}</span>
       </div>
       <span>
         {"Score: "}
         <span className="font-semibold">{assignment?.score?.toFixed(0)}</span>
         {"%"}
       </span>
-    </Link>
+    </div>
   );
 };
 
