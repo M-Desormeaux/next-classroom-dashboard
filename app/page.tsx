@@ -39,7 +39,7 @@ const getClassData = (assignments: FormattedAssignment[], classID: string) => {
 };
 
 export default async function HomePage() {
-  const { formatted: assignments } = await getAssignments();
+  const assignments = await getAssignments();
   const { formatted: students } = await getStudents();
 
   const classSummary = CLASS_IDS.map((id) =>

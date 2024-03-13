@@ -55,5 +55,5 @@ export const getAssignments = async () => {
       };
     }) ?? null;
 
-  return { raw: data, formatted };
+  return formatted;
 };

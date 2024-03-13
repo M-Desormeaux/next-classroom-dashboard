@@ -32,7 +32,7 @@ const AssignmentCard = ({ assignment }: { assignment: Assignment }) => {
       </div>
       <span>
         {"Avg: "}
-        <span className="font-semibold">{assignment?.avg.toFixed(1)}</span>
+        <span className="font-semibold">{assignment?.avg.toFixed(2)}</span>
         {"%"}
       </span>
     </Link>
