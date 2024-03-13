@@ -25,10 +25,11 @@ export default async function ClassesPage() {
       <ul className="flex w-full flex-col gap-2">
         {data?.map(
           (a: {
-            classID: number;
+            classID: string;
             label: string;
             start: string;
             end: string;
+            teacher: string;
           }) => (
             <li key={a?.classID}>
               <Link
@@ -39,6 +40,7 @@ export default async function ClassesPage() {
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:underline group-focus-visible:underline">
                     {a?.label}
                   </h3>
+                  <span className="text-gray-700">{a?.teacher}</span>
                 </div>
                 <div>
                   {a?.start} to {a?.end}
