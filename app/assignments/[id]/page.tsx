@@ -6,25 +6,29 @@ import Link from "next/link";
 interface Assignment {
   assignmentID: string;
   classID: string;
+  studentID: string;
   name: string;
   classLabel: string;
   score: number;
 }
 
 const AssignmentCard = ({ assignment }: { assignment: Assignment }) => {
+  const classLabel = assignment?.classLabel ?? "unknown";
+
   return (
     <Link
-      href={`/assignments/${assignment.assignmentID}`}
+      href={`/students/${assignment.studentID}`}
       className="group flex w-full flex-grow flex-col gap-1 rounded border p-3 hover:bg-gray-100 hover:shadow active:shadow-sm xs:flex-row xs:items-center xs:justify-between"
     >
       <div>
         <h3 className="text-lg font-semibold text-gray-900 group-hover:underline group-focus-visible:underline">
           {assignment?.name}
         </h3>
+        <span className="text-gray-800">{classLabel}</span>
       </div>
       <span>
-        {"Avg: "}
-        <span className="font-semibold">{assignment?.score?.toFixed(2)}</span>
+        {"Score: "}
+        <span className="font-semibold">{assignment?.score?.toFixed(0)}</span>
         {"%"}
       </span>
     </Link>
