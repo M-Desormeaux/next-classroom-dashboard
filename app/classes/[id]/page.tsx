@@ -63,7 +63,7 @@ export default async function ClassPage({
         </div>
       </Card>
       <Card heading="Class Assignments">
-        <ul className="flex w-full flex-col gap-2">
+        <ul className="flex w-full flex-col">
           {assignments?.map((assignment) => (
             <li key={assignment.assignmentID}>
               <AssignmentCard assignment={assignment} />

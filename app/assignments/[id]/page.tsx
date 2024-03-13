@@ -54,7 +54,7 @@ export default async function AssignmentPage({
         </div>
       </Card>
       <Card heading="Assignment Grades">
-        <ul className="flex w-full flex-col gap-2">
+        <ul className="flex w-full flex-col">
           {assignment?.grades?.map((grade) => (
             <li key={grade.assignmentID}>
               <AssignmentCard assignment={grade} />

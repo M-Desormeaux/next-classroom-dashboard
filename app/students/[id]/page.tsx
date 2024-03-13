@@ -52,7 +52,7 @@ export default async function StudentPage({
 
       {grades?.map((subject: any) => (
         <Card heading={subject.label} key={subject.label}>
-          <ul className="flex w-full flex-col gap-2">
+          <ul className="flex w-full flex-col">
             {subject.classGrades.map((assignment: Assignment) => (
               <li key={assignment.assignmentID}>
                 <AssignmentCard assignment={assignment} />
