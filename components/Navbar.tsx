@@ -1,5 +1,6 @@
 "use client";
 
+import { logOut } from "@/app/login/actions";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,7 +16,7 @@ export const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 w-full max-w-4xl rounded-b bg-white drop-shadow">
-      <ul className="flex gap-3 p-4">
+      <ul className="flex items-center gap-3 overflow-x-auto p-4">
         {ROUTES.map((route) => {
           const isActive = route.href === path;
 
@@ -30,7 +31,22 @@ export const Navbar = () => {
             </li>
           );
         })}
+
+        <div className="flex-grow "></div>
+
+        <li key="sign out">
+          <button
+            className="rounded bg-red-200 px-2 py-1"
+            onClick={async () => await logOut()}
+          >
+            Log Out
+          </button>
+        </li>
       </ul>
+      {/* 
+      //! TODO resolve mobile header with login!
+      ?? HeadlessUI Menu component?
+      */}
     </nav>
   );
 };
