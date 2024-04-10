@@ -40,10 +40,16 @@ export default function LoginPage() {
           />
         </div>
         <div className="flex justify-center gap-2 py-4">
-          <button className="padding bg-green-300 px-4 py-2" formAction={login}>
+          <button
+            className="padding rounded bg-green-300 px-4 py-2 drop-shadow hover:drop-shadow-md active:drop-shadow-none"
+            formAction={login}
+          >
             Log in
           </button>
-          <button className="padding border px-4 py-2" formAction={signup}>
+          <button
+            className="padding rounded border bg-white px-4 py-2 drop-shadow hover:drop-shadow-md active:drop-shadow-none"
+            formAction={signup}
+          >
             Sign up
           </button>
         </div>
