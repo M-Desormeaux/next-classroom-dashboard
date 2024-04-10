@@ -3,6 +3,8 @@ import { login, signup } from "./actions";
 
 import { serif } from "../fonts";
 
+const defaultInfo = { email: "admin@example.com", pass: "adminpassword" };
+
 export default function LoginPage() {
   return (
     <section className="flex flex-grow flex-col items-center gap-3 p-4">
@@ -46,6 +48,16 @@ export default function LoginPage() {
           </button>
         </div>
       </form>
+
+      <div className="flex w-fit max-w-64 flex-col gap-1 rounded border border-gray-500 bg-gray-100 p-3">
+        If you are wanting to preview the app without signing up please use:
+        <pre className="w-fit rounded bg-yellow-200 px-1 italic">
+          {defaultInfo.email}
+        </pre>
+        <pre className="w-fit rounded bg-yellow-200 px-1 italic">
+          {defaultInfo.pass}
+        </pre>
+      </div>
     </section>
   );
 }
