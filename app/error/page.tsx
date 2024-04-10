@@ -1,7 +1,7 @@
 import { Section } from "@/components/Section";
 import { serif } from "../fonts";
 
-export default function ErrorPage() {
+export default function Page() {
   return (
     <Section>
       <h1 className={`text-xl font-bold ${serif.className}`}>
