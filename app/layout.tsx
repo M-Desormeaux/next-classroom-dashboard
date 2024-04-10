@@ -31,7 +31,7 @@ export default async function RootLayout({
         {auth && <Navbar />}
         <main
           className={
-            "flex h-full w-full max-w-4xl flex-grow flex-col bg-white drop-shadow" +
+            "flex h-full w-full max-w-4xl flex-grow flex-col bg-white drop-shadow " +
             (auth ? "rounded-t" : "")
           }
         >
