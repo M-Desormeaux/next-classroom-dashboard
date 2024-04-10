@@ -1,12 +1,9 @@
-"use client";
-
-import { sans, serif } from "../fonts";
-
-// Error components must use client
+import { Section } from "@/components/Section";
+import { serif } from "../fonts";
 
 export default function GlobalError() {
   return (
-    <main className="flex min-h-lvh items-center px-10">
+    <Section>
       <div className="rounded border-2 border-red-600 bg-red-50 px-6 py-4">
         <h1 className={`text-xl font-bold ${serif.className}`}>
           Woah, something Critical happened.
@@ -15,8 +12,7 @@ export default function GlobalError() {
           I apologize for the inconvenience and I am, likely, fixing this as we
           speak.
         </p>
-        {/* <button onClick={() => reset()}>Try again</button> */}
       </div>
-    </main>
+    </Section>
   );
 }
