@@ -1,6 +1,5 @@
+import { useAuth } from "@/hooks/useAuth";
 import { getScores } from "@/utils/getScores";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 
 interface Grade {
   name: string;
@@ -48,8 +47,8 @@ export interface FormattedAssignment {
 }
 
 export const getAssignment = async (id: string) => {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = await useAuth();
+
   const { data }: { data: GetAssignmentsSchema } = await supabase
     .from("assignments")
     .select(

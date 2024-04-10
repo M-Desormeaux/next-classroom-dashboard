@@ -1,6 +1,5 @@
+import { useAuth } from "@/hooks/useAuth";
 import { getScores } from "@/utils/getScores";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 
 interface Grade {
   score: number;
@@ -21,8 +20,8 @@ interface Student {
 export type GetStudentsSchema = Student[] | null;
 
 export const getStudents = async () => {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = await useAuth();
+
   const { data }: { data: GetStudentsSchema } = await supabase
     .from("students")
     .select(

@@ -1,5 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
+import { useAuth } from "@/hooks/useAuth";
 
 interface ClassData {
   classID: string;
@@ -10,8 +9,8 @@ interface ClassData {
 }
 
 export const getClassData = async (id: string) => {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = await useAuth();
+
   const { data } = await supabase.from("classes").select().eq("classID", id);
 
   return data as ClassData[] | null;
