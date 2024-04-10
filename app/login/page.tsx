@@ -5,14 +5,14 @@ import { serif } from "../fonts";
 
 export default function LoginPage() {
   return (
-    <Section>
+    <section className="flex flex-grow flex-col items-center gap-3 p-4">
       <header className="flex justify-center">
-        <h1 className={`inline p-2 text-2xl font-bold ${serif.className}`}>
+        <h1 className={`inline p-4 text-2xl font-bold ${serif.className}`}>
           Login / Sign up
         </h1>
       </header>
 
-      <form className="m-auto flex flex-col gap-2">
+      <form className="flex w-fit flex-col gap-3">
         <div>
           <label className="block" htmlFor="email">
             Email:
@@ -37,7 +37,7 @@ export default function LoginPage() {
             required
           />
         </div>
-        <div className="flex gap-2 px-2">
+        <div className="flex justify-center gap-2 py-4">
           <button className="padding bg-green-300 px-4 py-2" formAction={login}>
             Log in
           </button>
@@ -46,6 +46,6 @@ export default function LoginPage() {
           </button>
         </div>
       </form>
-    </Section>
+    </section>
   );
 }
